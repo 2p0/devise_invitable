@@ -260,7 +260,7 @@ module Devise
         # Attributes must contain invitation_token, password and confirmation
         def accept_invitation!(attributes={})
           original_token = attributes.delete(:invitation_token)
-          invitable = find_by_invitation_token(original_token, false)
+          invitable = find_by(:invitation_token => original_token)
           puts invitable.inspect
           puts "From the inside"
           if invitable.errors.empty?
